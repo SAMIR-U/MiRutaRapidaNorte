@@ -26,7 +26,10 @@ async function doit(p, body) {
 }
 
 // ---------- Sesión ----------
-function logout() { delete localStorage.token; token = null; st = null; $('app').hidden = true; $('login').hidden = false; }
+function logout() {
+  turnAlarm.reset();
+  delete localStorage.token; token = null; st = null; $('app').hidden = true; $('login').hidden = false;
+}
 function start() { $('login').hidden = true; $('app').hidden = false; $('hRuta').textContent = 'Ruta ' + localStorage.ruta; refresh(); }
 $('login').onsubmit = async e => {
   e.preventDefault(); $('err').textContent = '';
@@ -140,6 +143,7 @@ function draw() {
     .map(([c, t, lx]) => `<circle cx="${lx}" cy="618" r="6" fill="${c}"/><text class="leg" x="${lx + 11}" y="622">${t}</text>`).join('');
 
   $('scene').innerHTML = g;
+  turnAlarm.update(st.me.bus, nowS());
   panel();
 }
 const pick = e => { const n = e.target.closest('.node'); if (n) { sel = +n.dataset.id; draw(); } };
@@ -158,7 +162,7 @@ function panel() {
       h += `<h2>En ruta a ${nm(b.target)}</h2><div class="sub">Llegada estimada <span class="t">${fmt(m.etas[b.target])}</span> (incluye espera en la parada)</div>`;
     } else {
       const el = (nowS() - b.arrivedAt) / 1000;
-      h += `<h2>En ${nm(b.current)}</h2><div class="sub">Llevas <span class="t">${fmt(el)}</span> · te quedan <span class="t">${fmt(Math.max(0, 120 - el))}</span> de turno de espera</div>`;
+      h += `<h2>En ${nm(b.current)}</h2><div class="sub">Llevas <span class="t">${fmt(el)}</span> · te quedan <span class="t">${fmt(Math.max(0, turnAlarm.waitSeconds - el))}</span> de turno de espera</div>`;
     }
     if (b.current < last) {
       const next = m.suggest, skip = m.skipped.map(i => S(i).name).join(', ');
@@ -178,7 +182,7 @@ function panel() {
       <div class="row"><div><div class="sub">Espera en parada</div><div class="t">${fmt(liveWait(s))}</div></div><div><div class="sub">Tu llegada estimada</div><div class="t">${e == null ? '—' : fmt(e)}</div></div></div>
       <button class="ghost" ${ok && b.target !== sel ? '' : 'disabled'} data-act="target" data-stop="${sel}">${b && b.target === sel ? 'Es tu destino actual' : 'Ir a esta parada'}</button>`;
   }
-  $('panel').innerHTML = h;
+  $('panelContent').innerHTML = h;
 }
 $('panel').addEventListener('click', e => {
   const btn = e.target.closest('[data-act]'); if (!btn) return;

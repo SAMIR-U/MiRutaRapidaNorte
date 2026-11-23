@@ -17,7 +17,7 @@
   <button class="alt">Ingresar</button>
 </form>
 <div id="app" hidden>
-  <header><b id="hRuta"></b><span id="hInfo"></span><button id="out" type="button">Salir</button></header>
+  <header><b id="hRuta"></b><span id="hInfo"></span><button id="audioToggle" type="button" aria-label="Silenciar audio" aria-pressed="false">🔊</button><button id="out" type="button">Salir</button></header>
   <svg id="map" viewBox="0 0 440 640" role="group" aria-label="Mapa de paraderos">
     <defs>
       <!-- Bus visto de frente (icono del conductor) -->
@@ -37,8 +37,12 @@
     </defs>
     <g id="scene"></g>
   </svg>
-  <section id="panel"></section>
+  <section id="panel">
+    <div id="alarmBanner" role="alert" hidden>¡Tiempo agotado! Tu turno de espera terminó. Sal de la parada para continuar.</div>
+    <div id="panelContent"></div>
+  </section>
 </div>
+<script src="/src/js/alarm.js"></script>
 <script src="/src/js/app.js"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@ Proyecto final de Matemáticas Discretas (2026).
 - La recomendación de Dijkstra se marca en el mapa con línea punteada; al aceptarla, la ruta queda marcada con línea sólida.
 - Cada paradero muestra la espera estimada, los buses detenidos y los que van llegando. El encabezado muestra el total de buses activos.
 - El sistema asigna automáticamente la siguiente parada. El chofer informa cuando **llega** y cuando **sale**.
+- Al agotarse el turno de espera, muestra una alerta visual y reproduce una alarma que se puede silenciar.
 - El chofer puede elegir otra parada en el mapa y ver al instante su espera y su llegada estimada.
 - Si la espera se acumula, la app recomienda saltar una o más paradas.
 - El estado de los buses se guarda en JSON o en Postgres.
@@ -61,7 +62,9 @@ MiRutaRapidaNorte/
 └── public/src/
     ├── html/index.html
     ├── css/styles.css
-    └── js/app.js
+    └── js/
+        ├── alarm.js           lógica de alarma y audio
+        └── app.js
 ```
 
 ## Despliegue en Render
