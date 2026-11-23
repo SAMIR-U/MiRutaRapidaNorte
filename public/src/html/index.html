@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MiRutaRapidaNorte · Glorieta – Green Hills</title>
+<link rel="stylesheet" href="/src/css/styles.css">
+</head>
+<body>
+<form id="login">
+  <h1>MiRutaRapidaNorte</h1>
+  <p>Ingreso de busetero · Glorieta del Gobernador → Green Hills. Si es tu primera vez, se crea tu cuenta.</p>
+  <input id="name" placeholder="Nombre" autocomplete="username" required>
+  <input id="pw" type="password" placeholder="Contraseña (mín. 4)" autocomplete="current-password" required>
+  <select id="ruta" aria-label="Ruta"><option value="2">Ruta 2</option><option value="13">Ruta 13</option><option value="22">Ruta 22</option></select>
+  <div id="err" role="alert"></div>
+  <button class="alt">Ingresar</button>
+</form>
+<div id="app" hidden>
+  <header><b id="hRuta"></b><span id="hInfo"></span><button id="out" type="button">Salir</button></header>
+  <svg id="map" viewBox="0 0 400 640" role="img" aria-label="Mapa de paraderos"></svg>
+  <section id="panel"></section>
+</div>
+<script src="/src/js/app.js"></script>
+</body>
+</html>
