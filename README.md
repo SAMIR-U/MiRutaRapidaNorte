@@ -91,5 +91,5 @@ Sobre el plan gratuito de Render:
 ## Limitaciones conocidas
 
 - No usa GPS: el sistema se entera de las llegadas y salidas porque el chofer las informa.
-- El modelo de espera es una simplificación (ver FUNCIONAMIENTO.md, sección de supuestos).
+- El modelo de espera es una simplificación.
 - Cualquier persona puede crear una cuenta; no hay un administrador que valide a los conductores.
