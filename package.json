@@ -1,0 +1,9 @@
+{
+  "name": "mirutarapidanorte",
+  "version": "1.0.0",
+  "description": "MiRutaRapidaNorte: regulación de paradas Glorieta del Gobernador - Green Hills (rutas 2, 13, 22)",
+  "main": "server/index.js",
+  "scripts": { "start": "node server/index.js" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "express": "^4.19.2", "pg": "^8.12.0" }
+}
