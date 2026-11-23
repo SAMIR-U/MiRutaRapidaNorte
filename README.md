@@ -9,7 +9,9 @@ Proyecto final de Matemáticas Discretas (2026).
 ## Qué hace
 
 - Inicio de sesión del busetero (nombre, contraseña y ruta).
-- Mapa con solo los nodos de los 9 paraderos, coloreados según la espera (verde, ámbar, rojo).
+- Mapa con los 9 paraderos, coloreados según la espera (verde, ámbar, rojo), con etiquetas cortas y etiquetas de estado (Destino, Sugerida, Saltar).
+- El conductor se ve como un bus de frente con la leyenda «Tú»: entre dos nodos si va en trayecto, o al lado del nodo si está en una parada.
+- La recomendación de Dijkstra se marca en el mapa con línea punteada; al aceptarla, la ruta queda marcada con línea sólida.
 - Cada paradero muestra la espera estimada, los buses detenidos y los que van llegando. El encabezado muestra el total de buses activos.
 - El sistema asigna automáticamente la siguiente parada. El chofer informa cuando **llega** y cuando **sale**.
 - El chofer puede elegir otra parada en el mapa y ver al instante su espera y su llegada estimada.

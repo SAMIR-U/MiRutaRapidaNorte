@@ -74,7 +74,7 @@ app.post('/api/start', (req, res) => {                 // inicia en la Glorieta 
   const B = store.data.buses;
   if (B[req.key]) return res.status(400).json({ error: 'Ya tienes un trayecto activo.' });
   const p = plan(0, waits(B));
-  B[req.key] = { id: req.key, name: req.user.name, ruta: req.user.ruta, status: 'enRuta', current: 0, target: p.next, manual: false, updatedAt: Date.now() };
+  B[req.key] = { id: req.key, name: req.user.name, ruta: req.user.ruta, status: 'enRuta', current: 0, target: p.next, manual: false, departedAt: Date.now(), updatedAt: Date.now() };
   save(); res.json(snapshot(req.key));
 });
 app.post('/api/arrive', act(b => {                     // el chofer informa que llegó
@@ -86,7 +86,7 @@ app.post('/api/depart', act((b, req) => {              // el chofer informa que 
   if (b.current === N) { delete store.data.buses[req.key]; return; }   // fin del trayecto
   const p = plan(b.current, waits(store.data.buses));
   const keep = b.manual && b.target > b.current;
-  Object.assign(b, { status: 'enRuta', target: keep ? b.target : p.next, manual: false });
+  Object.assign(b, { status: 'enRuta', target: keep ? b.target : p.next, manual: false, departedAt: Date.now() });
 }));
 app.post('/api/target', act((b, req) => {              // el chofer elige otra parada en el mapa
   const stop = +req.body.stop;
