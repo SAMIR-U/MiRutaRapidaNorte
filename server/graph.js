@@ -5,7 +5,7 @@ const SKIP_PENALTY = +process.env.SKIP_PENALTY || 45;  // costo (s) por parada o
 // Paradero, nombre, lat, lng, tiempo al siguiente (s)
 const STOPS = [
   [1, 'Makro', 5.543589, -73.34944, 60], [2, 'Unicentro', 5.5452351, -73.34843, 95.5],
-  [3, 'Otso', 5.5477564, -73.3466946, 122.7], [4, 'Santoto', 5.5516327, -73.3458527, 70.9],
+  [3, 'Oxxo', 5.5477564, -73.3466946, 122.7], [4, 'Santoto', 5.5516327, -73.3458527, 70.9],
   [5, 'Quintas', 5.5539203, -73.3456346, 81.8], [6, 'Viva', 5.5565767, -73.3449766, 122.7],
   [7, 'Bomba Terpel', 5.5598848, -73.3428186, 65.5], [8, 'EDF Decorcerámica', 5.5614643, -73.3412998, 142.0],
   [9, 'Campus deportivo Uniboyacá', 5.5683094, -73.3325548, 0],
